@@ -15,13 +15,13 @@ mvn clean package  exec:java -Dexec.mainClass="ar.edu.dds.ClientREST"
 
 1. Prerequisitos: instalar algun broker de mensajeria MQTT. 
 Para hacer estas pruebas se utilizo Moquette y es muy sencillo de levantar.
-⋅⋅*. descargar https://bintray.com/artifact/download/andsel/generic/moquette-distribution-0.11.tar
-..*. descomprimirlo en alguna carpeta, por ejemplo $HOME/dds
-..*. ir a $HOME/dds/moquette-distribution-0.11/
-..*. crear la carpeta "config"
-..*. dentro de la carpeta $HOME/dds/moquette-distribution-0.11/config/ descargar 
+   1. descargar https://bintray.com/artifact/download/andsel/generic/moquette-distribution-0.11.tar
+   1. descomprimirlo en alguna carpeta, por ejemplo $HOME/dds
+   1. ir a $HOME/dds/moquette-distribution-0.11/
+   1. crear la carpeta "config"
+   1. dentro de la carpeta $HOME/dds/moquette-distribution-0.11/config/ descargar 
 https://raw.githubusercontent.com/andsel/moquette/master/broker/config/moquette.conf
-..*. iniciar el servidor con $HOME/dds/moquette-distribution-0.11/bin/moquette-distribution
+   1. iniciar el servidor con $HOME/dds/moquette-distribution-0.11/bin/moquette-distribution
 (Hay un .bat para windows, aunque no lo probamos. Probablemente requiera alguna configuración extra) 
 2. En 2 ventanas separadas 
 
