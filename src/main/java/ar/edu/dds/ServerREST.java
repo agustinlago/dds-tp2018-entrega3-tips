@@ -1,10 +1,45 @@
 package ar.edu.dds;
 
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import ar.edu.dds.aux.ApiMsg;
+import ar.edu.dds.aux.ClientMsg;
+import ar.edu.dds.aux.JsonTransformer;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+
+import static spark.Spark.*;
+import static spark.debug.DebugScreen.enableDebugScreen;
+
+
 public class ServerREST {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    public static void main(String[] args) {
+        enableDebugScreen();
+        port(4567);
+        List<String> msgs = new ArrayList<>();
 
-	}
+        get("/", (req, res) -> msgs, new JsonTransformer());
+        post("/", (req, res) -> {
+            ClientMsg msg = null;
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                msg = mapper.readValue(req.body(), ClientMsg.class);
+            } catch (JsonParseException e) {
+                res.status(400);
+                return new ApiMsg("json bad formed", e.getLocalizedMessage());
+            }
+            msgs.add(msg.getText());
+            res.status(201);
+            return new ApiMsg("created", "new msg ! ");
+
+        }, new JsonTransformer());
+
+
+    }
 
 }

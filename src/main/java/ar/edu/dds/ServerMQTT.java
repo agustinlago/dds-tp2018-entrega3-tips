@@ -1,38 +1,33 @@
 package ar.edu.dds;
 
-import ltg.commons.MessageListener;
-import ltg.commons.SimpleMQTTClient;
+
+import org.eclipse.paho.client.mqttv3.*;
 
 public class ServerMQTT {
 
-	public static void main(String[] args) {
-        // Create a new client and connect to a broker
-		SimpleMQTTClient sc = new SimpleMQTTClient("localhost");
+    public static void main(String[] args) throws MqttException, InterruptedException {
 
-        // Subscribe to a channel and register a callback for it
-        sc.subscribe("myChannel", new MessageListener() {
-            @Override
-            public void processMessage(String message) {
-                System.out.println(message);
+        System.out.println("== START SUBSCRIBER ==");
+
+        MqttClient client = new MqttClient("tcp://localhost:1883", "serverClientId");
+        client.setCallback(new MqttCallback() {
+            public void connectionLost(Throwable throwable) {
+                System.out.println("Connection to MQTT broker lost!");
+            }
+
+            public void messageArrived(String s, MqttMessage mqttMessage) throws Exception {
+                System.out.println("Message received:\t" + new String(mqttMessage.getPayload()));
+            }
+
+            public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
             }
         });
-    
-        // Publish to a channel
-        sc.publish("myChannel", "A message from me");
-    
-        while (!Thread.currentThread().isInterrupted()) {
-        }
-        
-        // Unsubscribe from a channel
-        sc.unsubscribe("myChannel");
+        client.connect();
 
-        
-        
-		// Disconnect from broker
-		sc.disconnect();
+        client.subscribe("iot_data");
+        System.out.println("ok!");
 
-		// Do something else or the client will die...
-       
-	}
-	
+
+    }
+
 }
