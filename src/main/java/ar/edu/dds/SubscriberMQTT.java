@@ -3,7 +3,7 @@ package ar.edu.dds;
 
 import org.eclipse.paho.client.mqttv3.*;
 
-public class ServerMQTT {
+public class SubscriberMQTT {
 
     public static void main(String[] args) throws MqttException, InterruptedException {
 

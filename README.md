@@ -21,13 +21,16 @@ Para hacer estas pruebas se utilizo Moquette y es muy sencillo de levantar.
    1. crear la carpeta "config"
    1. dentro de la carpeta $HOME/dds/moquette-distribution-0.11/config/ descargar 
 https://raw.githubusercontent.com/andsel/moquette/master/broker/config/moquette.conf
-   1. iniciar el servidor con $HOME/dds/moquette-distribution-0.11/bin/moquette-distribution
-(Hay un .bat para windows, aunque no lo probamos. Probablemente requiera alguna configuración extra) 
-2. En 2 ventanas separadas 
+   1.  iniciar el servidor MOQUETTE 
+       1. ir al directorio $HOME/dds/moquette-distribution-0.11/ (desde donde se ejecuta busca config/moquette.conf)
+       1. Ejecutar bin/moquette-distribution (Hay un .bat para windows, aunque no lo probamos. Probablemente requiera alguna configuración extra) 
+2. En  2 ventanas separadas 
 
-mvn clean package  exec:java -Dexec.mainClass="ar.edu.dds.ServerMQTT"
+   1. mvn clean package  exec:java -Dexec.mainClass="ar.edu.dds.SubscriberMQTT"
+   1. mvn clean package  exec:java -Dexec.mainClass="ar.edu.dds.PublisherMQTT"
+   1. recordar que ambas aplicaciones son clientes del servidor de mensajes Moquette. Si este no esta levantado les va a arrojar un error
 
-mvn clean package  exec:java -Dexec.mainClass="ar.edu.dds.ClientMQTT"
+
 
 Los ejemplos de MQTT se tomaron de:
 https://github.com/tgrall/mqtt-sample-java

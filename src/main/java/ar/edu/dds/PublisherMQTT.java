@@ -6,13 +6,13 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.util.Scanner;
 
-public class ClientMQTT {
+public class PublisherMQTT {
 
     public static void main(String[] args) throws MqttException {
         Scanner scanner = new Scanner(System.in);
 
 
-        System.out.println("== START PUBLISHER ==");
+        System.out.println("== START Publisher ==");
 
 
         MqttClient client = new MqttClient("tcp://localhost:1883", MqttClient.generateClientId());
