@@ -24,6 +24,7 @@ https://raw.githubusercontent.com/andsel/moquette/master/broker/config/moquette.
    1.  iniciar el servidor MOQUETTE 
        1. ir al directorio $HOME/dds/moquette-distribution-0.11/ (desde donde se ejecuta busca config/moquette.conf)
        1. Ejecutar bin/moquette-distribution (Hay un .bat para windows, aunque no lo probamos. Probablemente requiera alguna configuración extra) 
+       1. Es importante aclarar que "config/moquette.conf" se busca relativo a donde se esta parado a la hora de ejecutar moquette-distribution. Si lo ejecutan como en las intrucciones lo busca en  $HOME/dds/moquette-distribution-0.11/config/moquette.conf. Si ejecutan moquette-distribution directamente desde bin, lo buscara en $HOME/dds/moquette-distribution-0.11/bin/config/moquette.conf
 2. En  2 ventanas separadas 
 
    1. mvn clean package  exec:java -Dexec.mainClass="ar.edu.dds.SubscriberMQTT"
