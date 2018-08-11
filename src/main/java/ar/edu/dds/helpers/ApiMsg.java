@@ -1,4 +1,4 @@
-package ar.edu.dds.aux;
+package ar.edu.dds.helpers;
 
 public class ApiMsg {
 

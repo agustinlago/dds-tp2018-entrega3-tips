@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import ar.edu.dds.aux.ApiMsg;
-import ar.edu.dds.aux.ClientMsg;
-import ar.edu.dds.aux.JsonTransformer;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import ar.edu.dds.helpers.ApiMsg;
+import ar.edu.dds.helpers.ClientMsg;
+import ar.edu.dds.helpers.JsonTransformer;
 
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.enableDebugScreen;

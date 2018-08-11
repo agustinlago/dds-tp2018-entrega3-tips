@@ -1,9 +1,10 @@
 package ar.edu.dds;
 
-import ar.edu.dds.aux.ClientMsg;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
+
+import ar.edu.dds.helpers.ClientMsg;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
